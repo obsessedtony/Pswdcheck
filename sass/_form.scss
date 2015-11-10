@@ -1,0 +1,116 @@
+$input-bg: #323642;
+$label-color: #555d69;
+$input-color: #adafb3;
+
+
+$button-text-color: #f1f1f1;
+$button-reset-color: #323642;
+$button-reset-color-hover: #252935;
+$button-check-color: #3fa9f5;
+$button-check-color-hover: #209cf5;
+
+
+#input-block {
+
+	label, input {
+		display: block;
+		background-color: transparent;
+	}
+
+	label {
+		padding: 2rem 2rem 0rem 2rem;
+		font-size: 1.2rem;
+		color: $label-color;
+		font-weight: 600;
+		text-transform: uppercase;
+	}
+
+	input, button {
+		display: block;
+		font-weight: 600;
+		font-size: 1.6rem;
+		outline: 0;
+		border: 0;
+		border-radius: 0;
+	}
+
+	input {
+		width: 100%;
+		padding: 2.4rem 7.5rem 2.8rem 2rem;
+		box-sizing: border-box;
+		color: $input-color;
+	}
+
+
+
+	#buttons-container {
+		margin-top: 1rem;
+	}
+
+	button {
+		width: 50%;
+		float: left;
+		padding: 2rem 1rem;
+		color: $button-text-color;
+		text-align: center;
+		transition: background-color .3s ease-in-out;
+		cursor: pointer;
+	}
+
+}
+
+#character-amount {
+	display: block;
+	position: absolute;
+	right: 2rem;
+	bottom: 2.1rem;
+	width: 3.5rem;
+	height: 3.5rem;
+	line-height: 1;
+
+
+	background-color: #3EA8F4;
+	border-radius: 50%;
+	text-align: center;
+
+	span {
+		display: block;
+		margin-top: 1.2rem;
+		color: #f2f2f2;
+		font-size: 1.2rem;
+		font-weight: 600;
+		cursor: arow;
+	}
+}
+
+#input-container {
+	margin-top: 1rem;
+	transition: border .3s ease-in-out;
+	background-color: $input-bg;
+	border-left: 2px solid #3fa9f5;
+	position: relative;
+}
+
+#check-button {
+	background-color: $button-check-color;
+	border-radius: 3px 0px 0px 3px;
+}
+
+#reset-button {
+	background-color: $button-reset-color;
+	border-radius: 0px 3px 3px 0px;
+}
+
+#reset-button:hover {
+	background-color: $button-reset-color-hover;
+}
+
+#check-button:hover {
+	background-color: $button-check-color-hover;
+}
+
+@media (min-width: 550px) {
+	#input-block {
+		margin-top: 5%;
+	}
+}

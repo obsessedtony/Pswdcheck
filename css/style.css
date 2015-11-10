@@ -1,0 +1,297 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+#input-block label, #input-block input {
+  display: block;
+  background-color: transparent;
+}
+#input-block label {
+  padding: 2rem 2rem 0rem 2rem;
+  font-size: 1.2rem;
+  color: #555d69;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+#input-block input, #input-block button {
+  display: block;
+  font-weight: 600;
+  font-size: 1.6rem;
+  outline: 0;
+  border: 0;
+  border-radius: 0;
+}
+#input-block input {
+  width: 100%;
+  padding: 2.4rem 7.5rem 2.8rem 2rem;
+  box-sizing: border-box;
+  color: #adafb3;
+}
+#input-block #buttons-container {
+  margin-top: 1rem;
+}
+#input-block button {
+  width: 50%;
+  float: left;
+  padding: 2rem 1rem;
+  color: #f1f1f1;
+  text-align: center;
+  transition: background-color .3s ease-in-out;
+  cursor: pointer;
+}
+
+#character-amount {
+  display: block;
+  position: absolute;
+  right: 2rem;
+  bottom: 2.1rem;
+  width: 3.5rem;
+  height: 3.5rem;
+  line-height: 1;
+  background-color: #3EA8F4;
+  border-radius: 50%;
+  text-align: center;
+}
+#character-amount span {
+  display: block;
+  margin-top: 1.2rem;
+  color: #f2f2f2;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: arow;
+}
+
+#input-container {
+  margin-top: 1rem;
+  transition: border .3s ease-in-out;
+  background-color: #323642;
+  border-left: 2px solid #3fa9f5;
+  position: relative;
+}
+
+#check-button {
+  background-color: #3fa9f5;
+  border-radius: 3px 0px 0px 3px;
+}
+
+#reset-button {
+  background-color: #323642;
+  border-radius: 0px 3px 3px 0px;
+}
+
+#reset-button:hover {
+  background-color: #252935;
+}
+
+#check-button:hover {
+  background-color: #209cf5;
+}
+
+@media (min-width: 550px) {
+  #input-block {
+    margin-top: 5%;
+  }
+}
+html {
+  font-size: 62.5%;
+  background-color: #3C404D;
+}
+
+body {
+  font-size: 1.5em;
+  /* currently ems cause chrome bug misinterpreting rems on body element */
+  line-height: 1.5;
+  font-weight: 400;
+  font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #222;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.column,
+.columns {
+  width: 100%;
+  float: left;
+  box-sizing: border-box;
+}
+
+.container:after, .row:after, .u-cf {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+label, button, input {
+  line-height: 1;
+}
+
+/* Larger than mobile */
+/* Larger than phablet (also point when grid becomes active) */
+/* Larger than tablet */
+/* Larger than desktop */
+/* Larger than Desktop HD */
+#connector {
+  position: absolute;
+  margin-top: 0.8rem;
+  left: 3.2rem;
+  width: 2px;
+  background-color: #313541;
+  height: 24rem;
+}
+
+#flags-block .container {
+  padding: 3.8rem 3.4rem;
+}
+#flags-block .tip {
+  color: #adafb3;
+  font-weight: 400;
+  margin-bottom: 2.4rem;
+  margin-left: -0.6rem;
+  font-size: 1.6rem;
+}
+
+#password-properties p {
+  position: relative;
+  font-weight: 400;
+  font-size: 1.6rem;
+  padding: 2.4rem 0 0 0;
+  margin-left: 2.4rem;
+  line-height: 1;
+}
+#password-properties p:before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin-left: -3rem;
+  bottom: 1px;
+}
+#password-properties p.disabled-property {
+  color: #6A7789;
+}
+#password-properties p.disabled-property:before {
+  background-color: #6A7789;
+}
+#password-properties p:first-of-type {
+  padding-top: 0rem;
+}
+#password-properties p:first-of-type {
+  padding-top: 0rem;
+}
+#password-properties p.active {
+  color: #88d392;
+}
+#password-properties p.active:before {
+  background-color: #88d392;
+}
+#password-properties p.false {
+  color: #FF767B;
+}
+#password-properties p.false:before {
+  background-color: #FF767B;
+}
+
+#result-block {
+  margin-bottom: 2.5rem;
+}
+
+#result-rate {
+  margin: 0 auto;
+  margin-top: 2rem;
+  height: 76px;
+  width: 162px;
+}
+
+.rate-sprite, .rate-0, .rate-1, .rate-2, .rate-3, .rate-4, .rate-5 {
+  background-image: url("../img/rate-sprite.png");
+  background-repeat: no-repeat;
+}
+
+.rate-0 {
+  background-position: 0 0;
+}
+
+.rate-1 {
+  background-position: 0 -76px;
+}
+
+.rate-2 {
+  background-position: 0 -152px;
+}
+
+.rate-3 {
+  background-position: 0 -228px;
+}
+
+.rate-4 {
+  background-position: 0 -304px;
+}
+
+.rate-5 {
+  background-position: 0 -380px;
+}

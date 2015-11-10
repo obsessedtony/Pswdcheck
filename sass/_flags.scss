@@ -1,0 +1,88 @@
+$flag-color: #6A7789;
+$flag-active-color: #88d392;
+$connector-color: #313541;
+$false-color: #FF767B;
+
+#connector {
+	position: absolute;
+	margin-top: 0.8rem;
+	left: 3.2rem;
+	width: 2px;
+	background-color: $connector-color;
+	height: 24rem;
+}
+
+#flags-block {
+
+	//margin: 3.8rem 3.4rem;
+
+	.container {
+		//padding: 0 10px 0 0;
+		padding: 3.8rem 3.4rem;
+	}
+
+	.tip {
+		color: #adafb3;
+		font-weight: 400;
+		margin-bottom: 2.4rem;
+		margin-left: -0.6rem;
+		font-size: 1.6rem;
+	}
+}
+
+#password-properties {
+	p {
+		position: relative;
+		//color: $flag-color;
+		font-weight: 400;
+		font-size: 1.6rem;
+		padding: 2.4rem 0 0 0;
+		margin-left: 2.4rem;
+		line-height: 1;
+	}
+
+	p:before {
+		content: "";
+		position: absolute;
+		display: block;
+		width: 1rem;
+		height: 1rem;
+		border-radius: 50%;
+		//background-color: #6A7789;
+		margin-left: -3rem;
+		bottom: 1px;
+	}
+
+	p.disabled-property {
+		color: $flag-color;
+
+		&:before {
+			background-color: $flag-color;
+		}
+	}
+
+	p:first-of-type {
+		padding-top: 0rem;
+	}
+
+	p:first-of-type {
+		padding-top: 0rem;
+	}
+
+	p.active {
+		color: $flag-active-color;
+
+		&:before {
+			background-color: $flag-active-color;
+		}
+	}
+
+	p.false {
+		color: $false-color;
+
+		&:before {
+			background-color: $false-color;
+		}
+	}
+
+}

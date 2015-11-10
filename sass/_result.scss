@@ -1,0 +1,42 @@
+$result-color: #FF767B;
+$result-disabled-color: #323642;
+
+#result-block {
+	margin-bottom: 2.5rem;
+}
+
+#result-rate {
+	margin: 0 auto;
+	margin-top: 2rem;
+	height: 76px;
+	width: 162px;
+}
+
+.rate-sprite, .rate-0, .rate-1, .rate-2, .rate-3, .rate-4, .rate-5 {
+  background-image: url('../img/rate-sprite.png');
+  background-repeat: no-repeat;
+}
+
+.rate-0 {
+  background-position: 0 0;
+}
+
+.rate-1 {
+  background-position: 0 -76px;
+}
+
+.rate-2 {
+  background-position: 0 -152px;
+}
+
+.rate-3 {
+  background-position: 0 -228px;
+}
+
+.rate-4 {
+  background-position: 0 -304px;
+}
+
+.rate-5 {
+  background-position: 0 -380px;
+}
