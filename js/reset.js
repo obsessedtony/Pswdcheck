@@ -16,6 +16,7 @@ function ResetFlags() {
 		document.getElementById("lowercase-p").className = "disabled-property";
 		document.getElementById("uppercase-p").className = "disabled-property";
 		document.getElementById("digits-p").className = "disabled-property";
+		document.getElementById("special-char-p").className = "disabled-property";
 		document.getElementById("repetitive-symbols-p").className = "disabled-property";
 		document.getElementById("conventional-symbols-p").className = "disabled-property";
 
