@@ -16,8 +16,9 @@ function ResetFlags() {
 		document.getElementById("lowercase-p").className = "disabled-property";
 		document.getElementById("uppercase-p").className = "disabled-property";
 		document.getElementById("digits-p").className = "disabled-property";
-		document.getElementById("special-char-p").className = "disabled-property";
-		document.getElementById("conventional-p").className = "disabled-property";
+		document.getElementById("repetitive-symbols-p").className = "disabled-property";
+		document.getElementById("conventional-symbols-p").className = "disabled-property";
+
 }
 
 /*** Делает все флаги красными. Вызывается после нажатия на кнопку проверить ***/
@@ -28,5 +29,6 @@ function MakeFlagesFalse() {
 	document.getElementById("uppercase-p").className = "false";
 	document.getElementById("digits-p").className = "false";
 	document.getElementById("special-char-p").className = "false";
-	document.getElementById("conventional-p").className = "false";
+	document.getElementById("repetitive-symbols-p").className = "false";
+	document.getElementById("conventional-symbols-p").className = "false";
 }

@@ -1,6 +1,7 @@
 "use strict"
-/** Класс, в объекте которого будут содержаться все символьные подстроки.
- * Пример: 123asd444@@@ -> 123444 | asd | @@@ */
+
+/* Класс, в объекте которого будут содержаться все символьные подстроки.
+ * Пример работы : 123asd444@@@ -> 123444 | asd | @@@ */
 function PasswordBlocks() {
 
 	var self = this;
@@ -60,13 +61,18 @@ function PasswordBlocks() {
 
 			AddToSubstring(tempSubstring);
 		}
+
+		console.log("Пароль быт разбит на блоки.\n" + self.GetBlocks());
 	}
 
 	/** Можно вызвать только после MakeBlocks() */
 	this.GetBlocks = function() {
-		var blocks = "Digits block: " + self.digitsSubstring + "/n" +
-								"Letters block: " + self.lettersSubstring + "/n" +
-								"Special characters block: " + self.charactersSubstring;
+		var blocks = "";
+
+		blocks = self.digitsSubstring != "" ? ("Цифры: " + self.digitsSubstring + "\n") : "";
+		blocks +=	self.lettersSubstring != "" ? ("Буквы: " + self.lettersSubstring + "\n") : "";
+		blocks +=	self.charactersSubstring != "" ? ("Специальные символы: " + self.charactersSubstring) : "";
+
 		return blocks;
 	}
 }

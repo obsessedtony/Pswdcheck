@@ -3,17 +3,18 @@ var dictionary = {
 	"zyxwvutsrqponmlkjihgfedcba",
 	"qwertyuiopasdfghjklzxcvbnm",
 	"mnbvcxzlkjhgfdsapoiuytrewq",
-	"poiuytrewqlkjhgfdsamnbvcxz",
-	"zxcvbnmasdfghjklqwertyuiop"],
+	//"poiuytrewqlkjhgfdsamnbvcxz",
+	/*"zxcvbnmasdfghjklqwertyuiop"*/],
 
-	numberSequences: ["~!@#$%^&*()-_+=",
+	charactersSequences: ["~!@#$%^&*()-_+=",
 	"=+_-)(*&^%$#@!~",
 	"[];',./",
 	"/.,';][",
 	"{}:\"<>?",
 	"?><\":}{"],
 
-	digitsSequence: "0123456789876543210",
+	digitsSequences: ["0123456789",
+	"9876543210"],
 };
 
 /** Получить словарь для символа. */

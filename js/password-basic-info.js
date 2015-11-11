@@ -23,6 +23,9 @@ function PasswordBasicInfo(pass) {
 	this.fSpecialCharacters = false;
 	this.symbolsTypeAmount = 0; // общее кол-во символов различного типа
 
+	this.templateSymbolsAmount = 0;
+	this.templateSymbolsStatistic = 0;
+
 	/** Получить длину пароля */
 	this.GetLength = function () {
 		return passwordLength;
@@ -36,6 +39,11 @@ function PasswordBasicInfo(pass) {
 	/** Получить значение общего кол-во различных символов */
 	this.GetSymbolsTypeAmount = function () {
 		return self.symbolsTypeAmount;
+	}
+
+	this.GetStatistic = function() {
+		self.templateSymbolsStatistic = Math.round(self.templateSymbolsAmount / passwordLength * 100);
+		return self.templateSymbolsStatistic;
 	}
 
 

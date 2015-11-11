@@ -1,12 +1,13 @@
 var passwordBasicInfo = null;
 var repetitiveSymbols = null;
 var passwordBlocks = null;
+var keyboardSequences = null;
 
 
 /** Функция полного анализа пароля.
  * 1. Узнает кол-во разных типов символов.
- * 2. Находит повторки.
- * 3. Разбивает пароль на блоки.
+ * 2. Разбивает пароль на блоки.
+ * 3. Находит повторки.
  * 5. Находит шаблонные последовательности.
  * 6. Оценивает стойкость на основые вышеперечисленных результатов.
  * Адекватно работает, только если в пароле нет пробелов.
@@ -21,7 +22,6 @@ function AnalizePassword(password) {
 
 	// вырезаем пробелы
 	password = password.replace(/\s+/g, '');
-
 
 	// 1. Анализируем на вхождения разного рода символов.
 	// Внутри объекта будут установленные флаги.
@@ -39,85 +39,22 @@ function AnalizePassword(password) {
 	// 3. Анализируем на повторки каждый блок.
 	// Внутри объекта будет число повторок.
 	repetitiveSymbols = new RepetitiveSymbols();
+	repetitiveSymbols.FindRepetitiveSymbols();
+	// записываем кол-во найденных повторок
+
 	// repetitiveSymbols.FindRepetitiveSymbols(password);
 
-	if(passwordBlocks.digitsSubstring != "") {
-		repetitiveSymbols.FindRepetitiveSymbols(passwordBlocks.digitsSubstring);
-	}
 
-	if(passwordBlocks.lettersSubstring != "") {
-		repetitiveSymbols.FindRepetitiveSymbols(passwordBlocks.lettersSubstring);
-	}
-
-	if(passwordBlocks.charactersSubstring != "") {
-		repetitiveSymbols.FindRepetitiveSymbols(passwordBlocks.charactersSubstring);
-	}
-
-	console.log("Repetitive symbols amount: " + self.repetitiveSymbolsAmount);
-	console.log("Sequences: " + self.repetitiveSequences);
+	//console.log("Repetitive symbols amount: " + repetitiveSymbols.repetitiveSymbolsAmount);
+	//console.log("Sequences: " + repetitiveSymbols.repetitiveSequences);
 
 
+	keyboardSequences = new KeyboardSequences();
+	keyboardSequences.FindTemplateSequences();
 
-
-
-
-
-	// ––———––———––———––——— Все, что ниже - к пересмотру
-
-
-
-// 	digitsSubstring.trim();
-// 	lettersSubstring.trim();
-// 	charactersSubstring.trim();
-//
-// 	if(digitsSubstring != "") {
-// 		AnalizeSubstring(digitsSubstring, digitsSequence);
-// 	}
-//
-// 	if(lettersSubstring != "") {
-// 		AnalizeSubstring(lettersSubstring, lettersSequence);
-// 	}
-//
-// 	if(charactersSubstring != "") {
-// 		AnalizeSubstring(lettersSubstring, lettersSequence);
-// 	}
+	passwordBasicInfo.templateSymbolsAmount = keyboardSequences.templateSymbolsCounter + repetitiveSymbols.repetitiveSymbolsAmount;
 }
 
-
-
-
-function AnalizeSubstring(substring, sequence) {
-	substring.trim();
-	if (substring.length < 3) return;
-
-	var blocks = substring.split(" ");
-	var dictionary = "";
-	var templatedSequence = "";
-	var repetitiveBlocks = "";
-
-	for (var i = 0; i < sequence.length; i++) {
-		dictionary += sequence[i];
-	}
-
-	// console.log(blocks);
-	// console.log(dictionary);
-
-	for (var index = 0; index < blocks.length; index++) {
-		if (blocks[index].length < 1) continue;
-		var block = blocks[index];
-
-		repetitiveBlocks += FindRepetitiveSymbols(block) + " ";
-
-		if (dictionary.lastIndexOf(blocks[index]) != -1) {
-			templatedSequence += blocks[index] + " ";
-		}
-
-	}
-
-	if(repetitiveBlocks != "") console.log(repetitiveBlocks + "повторки");
-	if(templatedSequence != "") console.log(templatedSequence, " – последовательная комбинация");
-
-}
 
 
 

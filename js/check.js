@@ -8,10 +8,16 @@ function KeyUp() {
 	/** Получаем значение пароля */
 	var pass = document.getElementById("inputPass").value;
 
-	/** Не пускаем русские символы */
-	var reg = /[а-яА-ЯёЁ]/g;
-	if (pass.search(reg) != -1) {
-		document.getElementById("inputPass").value = pass.replace(reg, '');
+	// не пускаем русские символы
+	var reg1 = /[а-яА-ЯёЁ]/g;
+	if (pass.search(reg1) != -1) {
+		document.getElementById("inputPass").value = pass.replace(reg1, '');
+	}
+
+	// вырезаем пробелы
+	var reg2 = /\s+/g;
+	if (pass.search(reg2) != -1) {
+		document.getElementById("inputPass").value = pass.replace(reg2, '');
 	}
 
 	/** Обновляем кол-во символов */
@@ -33,44 +39,39 @@ function CheckClick(e) {
 /*** ОСНОВНАЯ ФУНКЦИЯ. УСТАНАВЛИВАЕТ ФЛАГИ И РЕЙТИНГ. ***/
 function CheckReliability(pass) {
 
-	var userPassword = new Password(pass); // создаем объект
-	userPassword.Analize();
+	AnalizePassword(pass);
 
-	if(userPassword.lengthErrorCode != 0) {
-		AlertMessage(userPassword.lengthErrorCode);
+
+	if(passwordBasicInfo.lengthErrorCode != 0) {
+		AlertMessage(passwordBasicInfo.lengthErrorCode);
 		return;
 	}
 
-
-
 	MakeFlagesFalse();
-	ActivateProperties(userPassword);
-	var length = userPassword.GetLength();
-	var flagAmount = userPassword.GetSymbolsTypeAmount();
+	ActivateProperties(passwordBasicInfo);
 
-	if (flagAmount >= 4 && length >= 21) {
-		SetRaiting("rate-5");
-	}
+	var length = passwordBasicInfo.GetLength();
+	var flagAmount = passwordBasicInfo.GetSymbolsTypeAmount();
 
-	else if (flagAmount >= 4 && length >= 14) {
-		SetRaiting("rate-4");
-	}
-
-	else if ((flagAmount >= 3 && length >= 14) ||
-					(flagAmount >= 1 && length >= 21)) {
-		SetRaiting("rate-3");
-	}
-
-	else if ((flagAmount >= 2 && length >= 8) ||
-					(flagAmount >= 1 && length >= 14)) {
-		SetRaiting("rate-2");
-	}
-
-	else if(flagAmount >= 1 && length >= 8) {
-		SetRaiting("rate-1");
-	}
-
+	CalculateRating(flagAmount, length);
 }
+
+function ShowAdditionalInfo() {
+		if(document.getElementById("result-rate").className == "rate-0") {
+			alert("Сначала введите пароль!");
+			return;
+		}
+		var message = "Шаблонные клавиатурные последовательности: " + keyboardSequences.templateSequences +
+		"\nОбщее кол-во символов в клавиатурных последовательностях: " + keyboardSequences.templateSymbolsCounter +
+		"\nПроцентное соотношение: " + keyboardSequences.GetStatistic()  +
+		"\n\nПоследовательности повторяющихся символов: " + repetitiveSymbols.repetitiveSequences +
+		"\nОбщее кол-во повторяющихся символов: " + repetitiveSymbols.repetitiveSymbolsAmount + "\n" +
+		"\nПроцентное соотношение: " + repetitiveSymbols.GetStatistic();
+
+		alert(message);
+}
+
+
 
 function AlertMessage(code) {
 	switch(code) {
@@ -80,38 +81,87 @@ function AlertMessage(code) {
 	}
 }
 
-/** Меняем цвет свойств, которые true. */
-function ActivateProperties(userPassword) {
-	if(userPassword.fMore14 == true) {
+/** Функция. Вычисляет рейтинг.
+ * Устанавливает класс в HTML с помощью SetRating().
+ * Используется после AnalizePassword().
+ */
+function CalculateRating(flagAmount, length) {
+	passwordBasicInfo.GetStatistic();
+	if (passwordBasicInfo.templateSymbolsStatistic < 10 &&
+			flagAmount >= 4 && length >= 21) {
+		SetRaiting("rate-5");
+	}
+
+	else if (passwordBasicInfo.templateSymbolsStatistic < 20 &&
+			flagAmount >= 4 && length >= 14) {
+		SetRaiting("rate-4");
+	}
+
+	else if (passwordBasicInfo.templateSymbolsStatistic < 30 &&
+					((flagAmount >= 3 && length >= 14) ||
+					(flagAmount == 2 && length >= 21)) ) {
+		SetRaiting("rate-3");
+	}
+
+	else if (passwordBasicInfo.templateSymbolsStatistic < 70 &&
+					((flagAmount >= 2 && length >= 8) ||
+					(flagAmount >= 1 && length >= 14)) ) {
+		SetRaiting("rate-2");
+	}
+
+	else if(passwordBasicInfo.templateSymbolsStatistic >= 70 &&
+					(flagAmount >= 1 && length >= 8)) {
+		SetRaiting("rate-1");
+	}
+}
+
+
+/* Функция. Активирует свойств в HTML.
+ * Меняет значение классов с помощью SetClass().
+ * Используется после AnalizePassword().
+ */
+function ActivateProperties(passwordBasicInfo) {
+
+	if(keyboardSequences.templateSymbolsCounter == 0) {
+		SetClass("conventional-symbols-p", "active");
+	}
+
+	if(repetitiveSymbols.repetitiveSymbolsAmount == 0) {
+		SetClass("repetitive-symbols-p", "active");
+	}
+
+	if(passwordBasicInfo.fMore14 == true) {
 		SetClass("more-14-p", "active");
 	}
-	if(userPassword.fMore21 == true) {
+	if(passwordBasicInfo.fMore21 == true) {
 		SetClass("more-21-p", "active");
 	}
-	if(userPassword.fDigit == true) {
+	if(passwordBasicInfo.fDigit == true) {
 		SetClass("digits-p", "active");
 	}
-	if(userPassword.fLowerLetter == true) {
+	if(passwordBasicInfo.fLowerLetter == true) {
 		SetClass("lowercase-p", "active");
 	}
-	if(userPassword.fUpperLetter == true) {
+	if(passwordBasicInfo.fUpperLetter == true) {
 		SetClass("uppercase-p", "active");
 	}
-	if(userPassword.fSpecialCharacters == true) {
+	if(passwordBasicInfo.fSpecialCharacters == true) {
 		SetClass("special-char-p", "active");
 	}
+
+
+
+
 }
 
-/*** Функция установки и сброса рейтинга ***/
+/* Функция. Установка и сброс рейтинга.
+ * Двигает спрайт, с помощью установки класса.
+*/
 function SetRaiting(rateClass) {
-	// Двигаем спрайт, чтобы он соответсвовал оценке.
 	SetClass("result-rate", rateClass);
-
 }
 
-/*** Установка класса через ID элемента ***/
+/* Функция. Установка класса через ID элемента */
 function SetClass(tagID, className) {
-
 	document.getElementById(tagID).className = className;
-
 }

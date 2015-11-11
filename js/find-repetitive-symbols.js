@@ -9,17 +9,49 @@ function RepetitiveSymbols() {
 	this.repetitiveSequences = "";
 	this.repetitiveSymbolsAmount = 0;
 
+	// Возвращает процентное соотношение повторяющихся символов.
+	this.GetStatistic = function () {
+		return Math.round(self.repetitiveSymbolsAmount / passwordBasicInfo.GetLength() * 100);
+	}
+
 	/** Закрытые переменные */
 	var self = this; // замыкание
 
-/** Ищет повторяющеися последовательности.
-	 * Для корректной работы счетчика,
-	 * нужно чтобы функция использовалась
-	 * на блоке текста только 1 раз.
-	 */
-	this.FindRepetitiveSymbols = function (block) {
+	/** Ищет повторяющеися последовательности.
+ * Для корректной работы счетчика,
+ * нужно чтобы функция использовалась
+ * на блоке текста только 1 раз.
+ */
 
-		if(block.length == 0) {
+
+
+	/** Функция. Находит повторяющеися символы во всех блоках.
+	 * Адекватно работает, только когда пароль разбит по блокам.
+	 * Обращается к объекту passwordBlocks, чтобы получить блоки.
+	*/
+	this.FindRepetitiveSymbols =  function() {
+		if (passwordBlocks.digitsSubstring != "") {
+			AnalizeBlock(passwordBlocks.digitsSubstring);
+		}
+
+		if (passwordBlocks.lettersSubstring != "") {
+			AnalizeBlock(passwordBlocks.lettersSubstring);
+		}
+
+		if (passwordBlocks.charactersSubstring != "") {
+			AnalizeBlock(passwordBlocks.charactersSubstring);
+		}
+
+		passwordBasicInfo.templateSymbolsAmount += self.repetitiveSymbolsAmount;
+
+		console.log("\nПоследовательности повторяющихся символов: " + self.repetitiveSequences + "\n");
+		console.log("Общее кол-во повторяющихся символов: " + self.repetitiveSymbolsAmount + "\n");
+		console.log("Процентное соотношение: " + self.GetStatistic() + "%\n");
+	}
+
+	function AnalizeBlock(block) {
+
+		if (block.length == 0) {
 			console.log("Empty string in FindRepetitiveSymbol()");
 			return -1;
 		}
@@ -44,7 +76,7 @@ function RepetitiveSymbols() {
 
 				// если мы больше не попадем в while, а повторяющяяся последовательность еще не записаны.
 				if (i == block.length && potentialRepSequence.length > 1) {
-					self.repetitiveSequences += potentialRepSequence;
+					self.repetitiveSequences += potentialRepSequence + " ";
 					self.repetitiveSymbolsAmount += potentialRepSequence.length;
 					// console.log("Последняя последовательность: " + potentialRepSequence);
 				}
@@ -65,10 +97,6 @@ function RepetitiveSymbols() {
 			repetitiveSymbolCounter = 0; // обнуляем счетчик повторов
 		}
 
-		//self.repetitiveSequences = self.repetitiveSequences.trim();
-		//console.log("Repetitive symbols amount: " + self.repetitiveSymbolsAmount);
-		//console.log("Sequences: " + self.repetitiveSequences);
 		return self.repetitiveSequences;
-
 	}
 }

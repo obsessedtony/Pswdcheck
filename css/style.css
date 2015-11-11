@@ -199,7 +199,7 @@ label, button, input {
   left: 3.2rem;
   width: 2px;
   background-color: #313541;
-  height: 24rem;
+  height: 28rem;
 }
 
 #flags-block .container {
@@ -265,6 +265,7 @@ label, button, input {
   margin-top: 2rem;
   height: 76px;
   width: 162px;
+  cursor: pointer;
 }
 
 .rate-sprite, .rate-0, .rate-1, .rate-2, .rate-3, .rate-4, .rate-5 {

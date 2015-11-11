@@ -21,11 +21,11 @@
 				<div id="input-container">
 					<div id="character-amount"><span id="pswd-length">23</span></div>
 					<label for="inputPass">Your password:</label>
-					<input onkeyup="KeyUp()" id="inputPass" type="password" placeholder="">
+					<input onkeyup="KeyUp()" id="inputPass" type="text" placeholder="">
 				</div>
 
 				<div id="buttons-container">
-					<div class="row">
+				<div class="row">
 						<button id="check-button" onclick="CheckClick()">Check</button>
 						<button id="reset-button" onclick="ResetClick()">Reset</button>
 					</div>
@@ -39,7 +39,8 @@
 				<p class="tip">Make sure your password has all of these proterties:</p>
 				<div id="connector"></div>
 				<div id="password-properties">
-					<p id="conventional-p" class="disabled-property">Unconventional password.</p>
+					<p id="conventional-symbols-p" class="disabled-property">Hasn't conventional sequences.</p>
+					<p id="repetitive-symbols-p" class="disabled-property">Hasn't repetitive symbols.</p>
 					<p id="more-14-p" class="disabled-property">More than 14 symbols.</p>
 					<p id="more-21-p" class="disabled-property">More than 21 symbols.</p>
 					<p id="digits-p" class="disabled-property">Has digits.</p>
@@ -48,13 +49,12 @@
 					<p id="special-char-p" class="disabled-property">Has special characters.</p>
 				</div>
 
-
 			</div>
 		</div>
 
 		<div id="result-block">
 			<div class="container">
-				<div id="result-rate" class="rate-0"></div>
+				<div id="result-rate" class="rate-0" onclick="ShowAdditionalInfo()"></div>
 			</div>
 		</div>
 
@@ -70,6 +70,7 @@
 	<script src="js/password-basic-info.js"></script>
 	<script src="js/password-blocks.js"></script>
 	<script src="js/find-repetitive-symbols.js"></script>
+	<script src ="js/find-keyboard-sequences.js"></script>
 	<script src="js/analize-password.js"></script>
 </body>
 
