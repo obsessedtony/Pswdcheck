@@ -87,29 +87,29 @@ function AlertMessage(code) {
  */
 function CalculateRating(flagAmount, length) {
 	passwordBasicInfo.GetStatistic();
-	if (passwordBasicInfo.templateSymbolsStatistic < 10 &&
+	if (passwordBasicInfo.templateSymbolsStatistic < 35 &&
 			flagAmount >= 4 && length >= 21) {
 		SetRaiting("rate-5");
 	}
 
-	else if (passwordBasicInfo.templateSymbolsStatistic < 20 &&
+	else if (passwordBasicInfo.templateSymbolsStatistic < 35 &&
 			flagAmount >= 4 && length >= 14) {
 		SetRaiting("rate-4");
 	}
 
-	else if (passwordBasicInfo.templateSymbolsStatistic < 30 &&
+	else if (passwordBasicInfo.templateSymbolsStatistic < 50 &&
 					((flagAmount >= 3 && length >= 14) ||
 					(flagAmount == 2 && length >= 21)) ) {
 		SetRaiting("rate-3");
 	}
 
-	else if (passwordBasicInfo.templateSymbolsStatistic < 70 &&
+	else if (passwordBasicInfo.templateSymbolsStatistic < 50 &&
 					((flagAmount >= 2 && length >= 8) ||
 					(flagAmount >= 1 && length >= 14)) ) {
 		SetRaiting("rate-2");
 	}
 
-	else if(passwordBasicInfo.templateSymbolsStatistic >= 70 &&
+	else if(passwordBasicInfo.templateSymbolsStatistic >= 50 &&
 					(flagAmount >= 1 && length >= 8)) {
 		SetRaiting("rate-1");
 	}

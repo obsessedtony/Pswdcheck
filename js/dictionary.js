@@ -1,17 +1,14 @@
 var dictionary = {
-	lettersSequences: ["abcdefghijklmnopqrstuvwxyz",
-	"zyxwvutsrqponmlkjihgfedcba",
+	lettersSequences: [/*"abcdefghijklmnopqrstuvwxyz",
+	"zyxwvutsrqponmlkjihgfedcba",*/
 	"qwertyuiopasdfghjklzxcvbnm",
 	"mnbvcxzlkjhgfdsapoiuytrewq",
 	//"poiuytrewqlkjhgfdsamnbvcxz",
 	/*"zxcvbnmasdfghjklqwertyuiop"*/],
 
-	charactersSequences: ["~!@#$%^&*()-_+=",
-	"=+_-)(*&^%$#@!~",
-	"[];',./",
-	"/.,';][",
-	"{}:\"<>?",
-	"?><\":}{"],
+	charactersSequences: ["~!@#$%^&*()-_+=[];',./{}:\"<>?",
+	"=+_-)(*&^%$#@!~/.,';][?><\":}{"
+	],
 
 	digitsSequences: ["0123456789",
 	"9876543210"],
